@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mundi Electric Ltd.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: #f5f2ec; color: #1a1a1a; }
+
+    /* NAV */
+    .ew-nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 40px; background: #f5f2ec; border-bottom: 1px solid #e0dbd2; }
+    .ew-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .ew-logo-text { display: flex; flex-direction: column; line-height: 1; }
+    .ew-logo-name { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 3px; color: #1a1a1a; }
+    .ew-logo-sub { font-size: 9px; letter-spacing: 4px; color: #999; text-transform: uppercase; margin-top: 2px; }
+    .ew-nav-links { display: flex; gap: 32px; font-size: 13px; color: #777; }
+    .ew-nav-links span:hover { color: #1a1a1a; cursor: pointer; }
+    .ew-cta-btn { background: #1a1a1a; color: #f5f2ec; border: none; padding: 10px 22px; font-size: 13px; font-weight: 500; border-radius: 4px; font-family: 'DM Sans', sans-serif; cursor: pointer; }
+
+    /* HERO */
+    .ew-hero { padding: 72px 40px 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; max-width: 1100px; margin: 0 auto; }
+    .ew-tag { display: inline-flex; align-items: center; gap: 6px; background: #eae6de; border: 1px solid #d8d2c6; padding: 5px 13px; border-radius: 20px; font-size: 11px; color: #777; margin-bottom: 24px; }
+    .ew-tag-dot { width: 6px; height: 6px; border-radius: 50%; background: #f5c518; flex-shrink: 0; }
+    .ew-h1 { font-family: 'Bebas Neue', sans-serif; font-size: 76px; line-height: 0.92; letter-spacing: 1px; color: #1a1a1a; margin: 0 0 20px; }
+    .ew-h1 em { color: #c49a00; font-style: normal; }
+    .ew-sub { font-size: 15px; color: #777; line-height: 1.75; max-width: 370px; margin-bottom: 34px; }
+    .ew-btns { display: flex; gap: 12px; }
+    .ew-btn-primary { background: #f5c518; color: #1a1a1a; padding: 13px 26px; font-size: 14px; font-weight: 500; border-radius: 4px; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+    .ew-btn-ghost { background: transparent; color: #1a1a1a; padding: 13px 26px; font-size: 14px; border-radius: 4px; border: 1px solid #ccc; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+
+    /* HERO CARD */
+    .ew-hero-right { background: #1a1a1a; border-radius: 14px; padding: 30px; }
+    .ew-stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+    .ew-stat { background: #242424; border-radius: 8px; padding: 18px; }
+    .ew-stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 38px; color: #f5c518; line-height: 1; }
+    .ew-stat-lbl { font-size: 12px; color: #666; margin-top: 4px; }
+    .ew-badge { display: flex; align-items: center; gap: 12px; background: #242424; border-radius: 8px; padding: 15px; }
+    .ew-badge-icon { width: 38px; height: 38px; background: rgba(245,197,24,0.12); border-radius: 7px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .ew-badge-icon svg { width: 18px; height: 18px; }
+    .ew-badge-txt { font-size: 13px; color: #888; }
+    .ew-badge-txt strong { display: block; color: #e8e4d9; font-weight: 500; font-size: 14px; margin-bottom: 2px; }
+
+    /* SERVICES */
+    .ew-services { padding: 64px 40px; border-top: 1px solid #e0dbd2; background: #f0ece4; }
+    .ew-services-inner { max-width: 1100px; margin: 0 auto; }
+    .ew-section-label { font-size: 11px; letter-spacing: 3px; color: #c49a00; text-transform: uppercase; margin-bottom: 10px; }
+    .ew-divider { width: 40px; height: 3px; background: #f5c518; border-radius: 2px; margin-bottom: 18px; }
+    .ew-h2 { font-family: 'Bebas Neue', sans-serif; font-size: 44px; color: #1a1a1a; letter-spacing: 1px; margin-bottom: 32px; }
+    .ew-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .ew-card { background: #f5f2ec; border: 1px solid #e0dbd2; border-radius: 12px; padding: 26px; transition: border-color 0.2s, box-shadow 0.2s; cursor: pointer; }
+    .ew-card:hover { border-color: #f5c518; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .ew-card-icon { width: 46px; height: 46px; background: #1a1a1a; border-radius: 9px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+    .ew-card-icon svg { width: 22px; height: 22px; }
+    .ew-card-title { font-size: 15px; font-weight: 500; color: #1a1a1a; margin-bottom: 8px; }
+    .ew-card-desc { font-size: 13px; color: #888; line-height: 1.65; }
+    .ew-card-arrow { color: #c49a00; font-size: 18px; margin-top: 18px; }
+
+    /* TESTIMONIAL */
+    .ew-testimonial { padding: 56px 40px; background: #1a1a1a; }
+    .ew-testimonial-inner { max-width: 1100px; margin: 0 auto; }
+    .ew-stars { color: #f5c518; font-size: 15px; letter-spacing: 3px; margin-bottom: 18px; }
+    .ew-quote { font-size: 19px; font-weight: 300; color: #ccc; line-height: 1.7; max-width: 660px; margin-bottom: 22px; }
+    .ew-reviewer { display: flex; align-items: center; gap: 12px; }
+    .ew-avatar { width: 42px; height: 42px; border-radius: 50%; background: rgba(245,197,24,0.18); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 16px; color: #f5c518; }
+    .ew-reviewer-name { font-size: 14px; font-weight: 500; color: #e8e4d9; }
+    .ew-reviewer-sub { font-size: 12px; color: #555; margin-top: 2px; }
+
+    /* FOOTER */
+    .ew-footer { padding: 28px 40px; border-top: 1px solid #e0dbd2; background: #f5f2ec; display: flex; justify-content: space-between; align-items: center; }
+    .ew-footer-logo { display: flex; align-items: center; gap: 9px; }
+    .ew-footer-logo-name { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 3px; color: #1a1a1a; }
+    .ew-footer-right { font-size: 12px; color: #aaa; }
+
+    /* HAMBURGER */
+    .ew-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .ew-hamburger span { display: block; width: 22px; height: 2px; background: #1a1a1a; border-radius: 2px; transition: transform 0.25s, opacity 0.25s; }
+    .ew-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .ew-hamburger.open span:nth-child(2) { opacity: 0; }
+    .ew-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .ew-mobile-menu { display: none; flex-direction: column; background: #f5f2ec; border-bottom: 1px solid #e0dbd2; padding: 0 24px; overflow: hidden; max-height: 0; transition: max-height 0.3s ease, padding 0.3s ease; }
+    .ew-mobile-menu.open { max-height: 300px; padding: 16px 24px 20px; }
+    .ew-mobile-menu span { font-size: 15px; color: #444; padding: 10px 0; border-bottom: 1px solid #e8e3da; cursor: pointer; }
+    .ew-mobile-menu span:last-child { border-bottom: none; }
+    .ew-mobile-cta { margin-top: 14px; background: #1a1a1a; color: #f5f2ec; border: none; padding: 13px; font-size: 14px; font-weight: 500; border-radius: 4px; font-family: 'DM Sans', sans-serif; cursor: pointer; width: 100%; }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .ew-nav { padding: 14px 20px; }
+      .ew-nav-links, .ew-cta-btn { display: none; }
+      .ew-hamburger { display: flex; }
+
+      .ew-hero { grid-template-columns: 1fr; padding: 40px 20px 36px; gap: 32px; }
+      .ew-h1 { font-size: 52px; }
+      .ew-sub { max-width: 100%; }
+      .ew-btns { flex-direction: column; }
+      .ew-btn-primary, .ew-btn-ghost { text-align: center; padding: 14px; }
+
+      .ew-services { padding: 44px 20px; }
+      .ew-cards { grid-template-columns: 1fr; }
+
+      .ew-testimonial { padding: 44px 20px; }
+      .ew-quote { font-size: 16px; }
+
+      .ew-footer { padding: 24px 20px; flex-direction: column; gap: 10px; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .ew-h1 { font-size: 44px; }
+      .ew-stats-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="ew-nav">
+    <a class="ew-logo" href="#">
+      <svg width="36" height="36" viewBox="8 13 76 68" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="82,47 64,15.6 28,15.6 10,47 28,78.4 64,78.4" fill="#f5c518"/>
+        <polygon points="55,27 43,27 38,48 46,48 36,67 51,67 55,45 48,45" fill="#1a1a1a"/>
+      </svg>
+      <div class="ew-logo-text">
+        <span class="ew-logo-name">MUNDI ELECTRIC</span>
+        <span class="ew-logo-sub">Ltd.</span>
+      </div>
+    </a>
+    <div class="ew-nav-links">
+      <span>Services</span>
+      <span>About</span>
+      <span>Projects</span>
+      <span>Contact</span>
+    </div>
+    <button class="ew-cta-btn">Get a Quote</button>
+    <button class="ew-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="ew-mobile-menu" id="mobileMenu">
+    <span>Services</span>
+    <span>About</span>
+    <span>Projects</span>
+    <span>Contact</span>
+    <button class="ew-mobile-cta">Get a Quote</button>
+  </div>
+
+  <!-- HERO -->
+  <section class="ew-hero">
+    <div>
+      <div class="ew-tag"><span class="ew-tag-dot"></span> Licensed &amp; Insured — Toronto, ON</div>
+      <h1 class="ew-h1">POWER<br>YOUR <em>SPACE.</em></h1>
+      <p class="ew-sub">Expert residential and commercial electrical services. Reliable, safe, and done right the first time — every time.</p>
+      <div class="ew-btns">
+        <button class="ew-btn-primary">Book a Service</button>
+        <button class="ew-btn-ghost">View Our Work</button>
+      </div>
+    </div>
+    <div class="ew-hero-right">
+      <div class="ew-stats-row">
+        <div class="ew-stat">
+          <div class="ew-stat-num">500+</div>
+          <div class="ew-stat-lbl">Jobs Completed</div>
+        </div>
+        <div class="ew-stat">
+          <div class="ew-stat-num">12+</div>
+          <div class="ew-stat-lbl">Years Experience</div>
+        </div>
+      </div>
+      <div class="ew-badge">
+        <div class="ew-badge-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#f5c518" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="ew-badge-txt">
+          <strong>Same-day Emergency Service</strong>
+          Available 24/7 for urgent calls
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="ew-services">
+    <div class="ew-services-inner">
+      <div class="ew-section-label">What we do</div>
+      <div class="ew-divider"></div>
+      <h2 class="ew-h2">OUR SERVICES</h2>
+      <div class="ew-cards">
+        <div class="ew-card">
+          <div class="ew-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#f5c518" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+          </div>
+          <div class="ew-card-title">Panel Upgrades</div>
+          <div class="ew-card-desc">Modernize your electrical panel for safety and increased capacity. Supports EV chargers and smart home tech.</div>
+          <div class="ew-card-arrow">→</div>
+        </div>
+        <div class="ew-card">
+          <div class="ew-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#f5c518" stroke-width="1.8"><circle cx="12" cy="12" r="5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1l2.1-2.1M17 7l2.1-2.1"/></svg>
+          </div>
+          <div class="ew-card-title">Lighting Installation</div>
+          <div class="ew-card-desc">Pot lights, dimmers, outdoor fixtures, and full lighting design for residential and commercial spaces.</div>
+          <div class="ew-card-arrow">→</div>
+        </div>
+        <div class="ew-card">
+          <div class="ew-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#f5c518" stroke-width="1.8"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <div class="ew-card-title">EV Charger Install</div>
+          <div class="ew-card-desc">Level 2 home charger installation. Fast, compliant, and eligible for government rebates.</div>
+          <div class="ew-card-arrow">→</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="ew-testimonial">
+    <div class="ew-testimonial-inner">
+      <div class="ew-stars">★★★★★</div>
+      <p class="ew-quote">"Best electrician I've hired. Showed up on time, explained everything clearly, and the work was spotless. My panel upgrade was done in a single day."</p>
+      <div class="ew-reviewer">
+        <div class="ew-avatar">JM</div>
+        <div>
+          <div class="ew-reviewer-name">James M.</div>
+          <div class="ew-reviewer-sub">Homeowner, North York</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="ew-footer">
+    <div class="ew-footer-logo">
+      <svg width="24" height="24" viewBox="8 13 76 68" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="82,47 64,15.6 28,15.6 10,47 28,78.4 64,78.4" fill="#f5c518"/>
+        <polygon points="55,27 43,27 38,48 46,48 36,67 51,67 55,45 48,45" fill="#1a1a1a"/>
+      </svg>
+      <span class="ew-footer-logo-name">MUNDI ELECTRIC LTD.</span>
+    </div>
+    <div class="ew-footer-right">© 2026 Mundi Electric Ltd. · Toronto, ON</div>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('hamburger');
+    const menu = document.getElementById('mobileMenu');
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('open');
+      menu.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
