@@ -57,6 +57,52 @@
     .ew-card-desc { font-size: 13px; color: #888; line-height: 1.65; }
     .ew-card-arrow { color: #c49a00; font-size: 18px; margin-top: 18px; }
 
+    /* GALLERY */
+    .ew-gallery { padding: 64px 40px; background: #f5f2ec; border-top: 1px solid #e0dbd2; }
+    .ew-gallery-inner { max-width: 1100px; margin: 0 auto; }
+    .ew-gallery-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 32px; }
+    .ew-gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 220px; gap: 14px; }
+    .ew-gallery-item { position: relative; border-radius: 10px; overflow: hidden; cursor: pointer; background: #e0dbd2; }
+    .ew-gallery-item.tall { grid-row: span 2; }
+    .ew-gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+    .ew-gallery-item:hover img { transform: scale(1.04); }
+    .ew-gallery-item .ew-gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 50%); opacity: 0; transition: opacity 0.3s; display: flex; align-items: flex-end; padding: 16px; }
+    .ew-gallery-item:hover .ew-gallery-overlay { opacity: 1; }
+    .ew-gallery-overlay-label { font-size: 13px; font-weight: 500; color: #fff; letter-spacing: 0.5px; }
+    /* Placeholder tiles (remove when real photos are added) */
+    .ew-gallery-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: #aaa; font-size: 12px; letter-spacing: 1px; }
+    .ew-gallery-placeholder svg { opacity: 0.35; }
+    .ph-1 { background: linear-gradient(135deg, #ddd8cf 0%, #c8c2b8 100%); }
+    .ph-2 { background: linear-gradient(135deg, #cfc9bf 0%, #bfb9ae 100%); }
+    .ph-3 { background: linear-gradient(135deg, #d8d2c8 0%, #c2bcb0 100%); }
+    .ph-4 { background: linear-gradient(135deg, #d0c9bf 0%, #bab3a8 100%); }
+    .ph-5 { background: linear-gradient(135deg, #ccc6bc 0%, #b8b2a7 100%); }
+    .ph-6 { background: linear-gradient(135deg, #d4cec4 0%, #bebab0 100%); }
+
+    /* LIGHTBOX */
+    .ew-lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 1000; align-items: center; justify-content: center; padding: 24px; }
+    .ew-lightbox.active { display: flex; }
+    .ew-lightbox-img { max-width: 90vw; max-height: 85vh; border-radius: 8px; object-fit: contain; }
+    .ew-lightbox-placeholder { width: min(700px, 90vw); height: min(480px, 75vh); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: #666; font-size: 13px; }
+    .ew-lightbox-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: #fff; font-size: 28px; cursor: pointer; opacity: 0.7; line-height: 1; }
+    .ew-lightbox-close:hover { opacity: 1; }
+    .ew-lightbox-caption { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); color: #ccc; font-size: 13px; white-space: nowrap; }
+    .ew-lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); border: none; color: #fff; font-size: 22px; cursor: pointer; padding: 12px 16px; border-radius: 6px; transition: background 0.2s; }
+    .ew-lightbox-nav:hover { background: rgba(255,255,255,0.2); }
+    .ew-lightbox-prev { left: 16px; }
+    .ew-lightbox-next { right: 16px; }
+
+    /* GALLERY MOBILE */
+    @media (max-width: 768px) {
+      .ew-gallery { padding: 44px 20px; }
+      .ew-gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; gap: 10px; }
+      .ew-gallery-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+    }
+    @media (max-width: 480px) {
+      .ew-gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 200px; }
+      .ew-gallery-item.tall { grid-row: span 1; }
+    }
+
     /* TESTIMONIAL */
     .ew-testimonial { padding: 56px 40px; background: #1a1a1a; }
     .ew-testimonial-inner { max-width: 1100px; margin: 0 auto; }
@@ -215,6 +261,89 @@
     </div>
   </section>
 
+  <!-- GALLERY -->
+  <section class="ew-gallery" id="projects">
+    <div class="ew-gallery-inner">
+      <div class="ew-gallery-header">
+        <div>
+          <div class="ew-section-label">Our Work</div>
+          <div class="ew-divider"></div>
+          <h2 class="ew-h2">PROJECT GALLERY</h2>
+        </div>
+        <p style="font-size:13px;color:#999;max-width:260px;text-align:right;line-height:1.6;">Real jobs, real results. Click any photo to expand.</p>
+      </div>
+      <div class="ew-gallery-grid">
+        <!-- Item 1 – tall -->
+        <div class="ew-gallery-item tall" data-index="0">
+          <img src="images/gallery-1.jpg" alt="Panel upgrade" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ew-gallery-placeholder ph-1" style="display:none">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Panel Upgrade</span>
+          </div>
+          <div class="ew-gallery-overlay"><span class="ew-gallery-overlay-label">Panel Upgrade — Brampton</span></div>
+        </div>
+        <!-- Item 2 -->
+        <div class="ew-gallery-item" data-index="1">
+          <img src="images/gallery-2.jpg" alt="Pot lights" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ew-gallery-placeholder ph-2" style="display:none">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Pot Lights</span>
+          </div>
+          <div class="ew-gallery-overlay"><span class="ew-gallery-overlay-label">Pot Lights — Mississauga</span></div>
+        </div>
+        <!-- Item 3 -->
+        <div class="ew-gallery-item" data-index="2">
+          <img src="images/gallery-3.jpg" alt="EV charger" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ew-gallery-placeholder ph-3" style="display:none">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>EV Charger Install</span>
+          </div>
+          <div class="ew-gallery-overlay"><span class="ew-gallery-overlay-label">EV Charger — Toronto</span></div>
+        </div>
+        <!-- Item 4 -->
+        <div class="ew-gallery-item" data-index="3">
+          <img src="images/gallery-4.jpg" alt="Commercial wiring" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ew-gallery-placeholder ph-4" style="display:none">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Commercial Wiring</span>
+          </div>
+          <div class="ew-gallery-overlay"><span class="ew-gallery-overlay-label">Commercial Wiring — Etobicoke</span></div>
+        </div>
+        <!-- Item 5 – tall -->
+        <div class="ew-gallery-item tall" data-index="4">
+          <img src="images/gallery-5.jpg" alt="Outdoor lighting" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ew-gallery-placeholder ph-5" style="display:none">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Outdoor Lighting</span>
+          </div>
+          <div class="ew-gallery-overlay"><span class="ew-gallery-overlay-label">Outdoor Lighting — Oakville</span></div>
+        </div>
+        <!-- Item 6 -->
+        <div class="ew-gallery-item" data-index="5">
+          <img src="images/gallery-6.jpg" alt="Basement rewire" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ew-gallery-placeholder ph-6" style="display:none">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Basement Rewire</span>
+          </div>
+          <div class="ew-gallery-overlay"><span class="ew-gallery-overlay-label">Basement Rewire — North York</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="ew-lightbox" id="lightbox">
+    <button class="ew-lightbox-close" id="lightboxClose">✕</button>
+    <button class="ew-lightbox-nav ew-lightbox-prev" id="lightboxPrev">&#8249;</button>
+    <button class="ew-lightbox-nav ew-lightbox-next" id="lightboxNext">&#8250;</button>
+    <img class="ew-lightbox-img" id="lightboxImg" src="" alt="" style="display:none">
+    <div class="ew-lightbox-placeholder ph-1" id="lightboxPlaceholder" style="display:none">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+      <span id="lightboxPlaceholderLabel" style="font-size:14px;color:#666;"></span>
+    </div>
+    <div class="ew-lightbox-caption" id="lightboxCaption"></div>
+  </div>
+
   <!-- TESTIMONIAL -->
   <section class="ew-testimonial">
     <div class="ew-testimonial-inner">
@@ -243,11 +372,60 @@
   </footer>
 
   <script>
+    // Hamburger
     const btn = document.getElementById('hamburger');
     const menu = document.getElementById('mobileMenu');
     btn.addEventListener('click', () => {
       btn.classList.toggle('open');
       menu.classList.toggle('open');
+    });
+
+    // Lightbox
+    const items = document.querySelectorAll('.ew-gallery-item');
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightboxImg');
+    const lbPlaceholder = document.getElementById('lightboxPlaceholder');
+    const lbPlaceholderLabel = document.getElementById('lightboxPlaceholderLabel');
+    const lbCaption = document.getElementById('lightboxCaption');
+    let current = 0;
+
+    function openLightbox(index) {
+      current = index;
+      const item = items[index];
+      const img = item.querySelector('img');
+      const label = item.querySelector('.ew-gallery-overlay-label')?.textContent || '';
+      lbCaption.textContent = label;
+
+      if (img && img.complete && img.naturalWidth > 0) {
+        lbImg.src = img.src;
+        lbImg.alt = img.alt;
+        lbImg.style.display = 'block';
+        lbPlaceholder.style.display = 'none';
+      } else {
+        lbImg.style.display = 'none';
+        lbPlaceholderLabel.textContent = label;
+        lbPlaceholder.className = `ew-lightbox-placeholder ${item.querySelector('.ew-gallery-placeholder')?.className.split(' ').find(c => c.startsWith('ph-')) || 'ph-1'}`;
+        lbPlaceholder.style.display = 'flex';
+      }
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    items.forEach((item, i) => item.addEventListener('click', () => openLightbox(i)));
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    document.getElementById('lightboxPrev').addEventListener('click', () => openLightbox((current - 1 + items.length) % items.length));
+    document.getElementById('lightboxNext').addEventListener('click', () => openLightbox((current + 1) % items.length));
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') openLightbox((current - 1 + items.length) % items.length);
+      if (e.key === 'ArrowRight') openLightbox((current + 1) % items.length);
     });
   </script>
 </body>
