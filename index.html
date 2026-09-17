@@ -24,6 +24,8 @@
     .ew-mobile-menu a { color: inherit; text-decoration: none; display: block; }
     html { scroll-behavior: smooth; }
     .ew-cta-btn { background: #1a1a1a; color: #f5f2ec; border: none; padding: 10px 22px; font-size: 13px; font-weight: 500; border-radius: 4px; font-family: 'DM Sans', sans-serif; cursor: pointer; }
+    .ew-phone-link { color: #1a1a1a; text-decoration: none; font-size: 15px; font-weight: 600; font-family: 'DM Sans', sans-serif; white-space: nowrap; }
+    .ew-phone-link:hover { color: #f5c518; }
 
     /* HERO */
     .ew-hero { padding: 72px 40px 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; max-width: 1100px; margin: 0 auto; }
@@ -140,7 +142,7 @@
     /* MOBILE */
     @media (max-width: 768px) {
       .ew-nav { padding: 14px 20px; }
-      .ew-nav-links, .ew-cta-btn { display: none; }
+      .ew-nav-links, .ew-phone-link { display: none; }
       .ew-hamburger { display: flex; }
 
       .ew-hero { grid-template-columns: 1fr; padding: 40px 20px 36px; gap: 32px; }
@@ -175,7 +177,7 @@
       <a href="#services">Services</a>
       <a href="#projects">Projects</a>
     </div>
-    <button class="ew-cta-btn">Get a Quote</button>
+    <a class="ew-phone-link" href="tel:+19055377291">(905) 537-7291</a>
     <button class="ew-hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
