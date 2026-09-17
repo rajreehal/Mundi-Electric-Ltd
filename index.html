@@ -22,6 +22,8 @@
     .ew-nav-links a:hover::after { width: 100%; }
     .ew-nav-links span:hover { color: #1a1a1a; }
     .ew-mobile-menu a { color: inherit; text-decoration: none; display: block; }
+    .ew-mobile-menu a { font-size: 15px; color: #444; padding: 10px 0; border-bottom: 1px solid #e8e3da; }
+    .ew-mobile-menu a:last-of-type { border-bottom: none; }
     html { scroll-behavior: smooth; }
     .ew-cta-btn { background: #1a1a1a; color: #f5f2ec; border: none; padding: 10px 22px; font-size: 13px; font-weight: 500; border-radius: 4px; font-family: 'DM Sans', sans-serif; cursor: pointer; }
     .ew-phone-link { color: #1a1a1a; text-decoration: none; font-size: 15px; font-weight: 600; font-family: 'DM Sans', sans-serif; white-space: nowrap; }
@@ -134,7 +136,7 @@
     .ew-hamburger.open span:nth-child(2) { opacity: 0; }
     .ew-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .ew-mobile-menu { display: none; flex-direction: column; background: #f5f2ec; border-bottom: 1px solid #e0dbd2; padding: 0 24px; overflow: hidden; max-height: 0; transition: max-height 0.3s ease, padding 0.3s ease; }
-    .ew-mobile-menu.open { max-height: 300px; padding: 16px 24px 20px; }
+    .ew-mobile-menu.open { display: flex; max-height: 300px; padding: 16px 24px 20px; }
     .ew-mobile-menu span { font-size: 15px; color: #444; padding: 10px 0; border-bottom: 1px solid #e8e3da; cursor: pointer; }
     .ew-mobile-menu span:last-child { border-bottom: none; }
     .ew-mobile-cta { margin-top: 14px; background: #1a1a1a; color: #f5f2ec; border: none; padding: 13px; font-size: 14px; font-weight: 500; border-radius: 4px; font-family: 'DM Sans', sans-serif; cursor: pointer; width: 100%; }
@@ -184,8 +186,8 @@
   </nav>
 
   <div class="ew-mobile-menu" id="mobileMenu">
-    <span>Services</span>
-    <span>Projects</span>
+    <a href="#services">Services</a>
+    <a href="#projects">Projects</a>
     <button class="ew-mobile-cta">Get a Quote</button>
   </div>
 
@@ -197,7 +199,7 @@
       <p class="ew-sub">Expert residential and commercial electrical services. Reliable, safe, and done right the first time — every time.</p>
       <div class="ew-btns">
         <a class="ew-btn-primary" href="tel:+19055377291" style="display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">(905) 537-7291</a>
-        <button class="ew-btn-ghost">View Our Work</button>
+        <a class="ew-btn-ghost" href="#projects" style="display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">View Our Work</a>
       </div>
     </div>
     <div class="ew-hero-right">
@@ -370,6 +372,12 @@
     btn.addEventListener('click', () => {
       btn.classList.toggle('open');
       menu.classList.toggle('open');
+    });
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        btn.classList.remove('open');
+        menu.classList.remove('open');
+      });
     });
 
     // Lightbox
